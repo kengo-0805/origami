@@ -1,3 +1,5 @@
+# http://www.japan-iss.co.jp/?p=1053
+
 import cv2 as cv
 def main():
     # ファイルを読み込み
