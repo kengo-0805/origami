@@ -1,9 +1,10 @@
 # http://www.japan-iss.co.jp/?p=1053
+# https://qiita.com/s-col/items/115b7f7d80133f89359d
 
 import cv2 as cv
 def main():
     # ファイルを読み込み
-    image_file = 'fig/target2.png'
+    image_file = 'fig/target.png'
     src = cv.imread(image_file, cv.IMREAD_COLOR)
     # 画像の大きさ取得
     height, width, channels = src.shape
