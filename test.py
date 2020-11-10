@@ -14,6 +14,7 @@ img[dst>0.01*dst.max()]=[255,0,0]
 # cv2.imshow('dst',img)
 # if cv2.waitKey(0) & 0xff == 27:
 #     cv2.destroyAllWindows()
+
 plt.imshow(img)
 plt.title('cornerHarris image')
 plt.show()
