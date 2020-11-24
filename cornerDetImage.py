@@ -13,7 +13,7 @@ cv2.imwrite("fig/edge.png", edge)
 # 32bit化？
 edge = np.float32(edge)
 # コーナー検出
-dst = cv2.cornerHarris(edge,2,3,0.04)
+dst = cv2.cornerHarris(edge,2,3,0.11)
 # 膨張処理
 dst = cv2.dilate(dst,None)
 # 赤い点をつける

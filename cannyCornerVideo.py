@@ -29,9 +29,8 @@ while(True):
     if cv2.waitKey(0) & 0xff == 27:
         cv2.destroyAllWindows()
 
-        
-    # print(座標)
 
+    # print(座標)
     cv2.waitKey(100)
 
 # except:

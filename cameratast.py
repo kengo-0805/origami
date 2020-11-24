@@ -1,5 +1,5 @@
 import cv2
-
+from realsensecv import RealsenseCapture
 # VideoCapture オブジェクトを取得します
 capture = cv2.VideoCapture(0)
 
