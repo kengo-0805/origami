@@ -19,6 +19,7 @@ dst = cv2.dilate(dst,None)
 # 赤い点をつける
 image[dst>0.01*dst.max()] = [255,0,0]
 # 表示
+image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 plt.imshow(image)
 plt.title('cornerHarris image')
 plt.show()

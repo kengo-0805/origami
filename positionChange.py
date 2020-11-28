@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 aruco = cv2.aruco
 p_dict = aruco.getPredefinedDictionary(aruco.DICT_4X4_50)
-img = cv2.imread('fig/inu.png')
+img = cv2.imread('fig/test.png')
 # img = cv2.bitwise_not(img)
 # cv2.imshow('image',img)
 # cv2.waitKey(0)
@@ -12,7 +12,7 @@ img = cv2.imread('fig/inu.png')
 corners, ids, rejectedImgPoints = aruco.detectMarkers(img, p_dict) # 検出
 
 # 時計回りで左上から順にマーカーの「中心座標」を m に格納
-m = np.empty((4,2))
+m = np.empty((4,2)) # 空の行列を作る
 for i,c in zip(ids.ravel(), corners):
   m[i] = c[0].mean(axis=0)
 
