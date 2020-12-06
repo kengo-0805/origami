@@ -31,7 +31,8 @@ def VideoCapture():
 def changePosition():
   aruco = cv2.aruco
   p_dict = aruco.getPredefinedDictionary(aruco.DICT_4X4_50)
-  img = cv2.imread("pic/picture{:0=3}".format(num)+".png")
+  # img = cv2.imread("pic/picture{:0=3}".format(num)+".png")
+  img = cv2.imread("fig/square_risize.png")
   print("画像を読み込んだ")
   corners, ids, rejectedImgPoints = aruco.detectMarkers(img, p_dict) # 検出
 
@@ -101,9 +102,17 @@ def cornerDetect():
   # 赤い点の検知
   coord = np.where(np.all(image == (255, 0, 0), axis=-1))
   # 座標の表示
+  corner_X = []
+  corner_Y = []
   for i in range(len(coord[0])):
       print("X:%s Y:%s"%(coord[1][i],coord[0][i]))
-  # 表示
+      original = coord[1][i] + coord[0][i] 
+      old = coord[1][i-1] + coord [0][i-1]
+      if abs(original - old) > 15:  # XYを足した値が前の値から15以上変化していたら
+        corner_X.append(coord[1][i])
+        corner_Y.append(coord[0][1])
+  for j in range(len(corner_X)):
+    print("角X:%s 角Y:%s"%(corner_X[j],corner_Y[j]))
   # image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
   # 保存
   cv2.imwrite("fig/image_corner_resize.png",image)
@@ -116,26 +125,31 @@ def cornerDetect():
 
 
 
-video_path = 1
-cap = cv2.VideoCapture(video_path)
-# cap = VideoCapture()
+# video_path = 1
+# cap = cv2.VideoCapture(video_path)
+# # cap = VideoCapture()
 
-num = 0
-global frame
-while(cap.isOpened()):
-    ret, frame = cap.read()
-    if ret == True:
-        cv2.imwrite("pic/picture{:0=3}".format(num)+".png",frame)
-        # print("save picture{:0=3}".format(num)+".png")
-        changePosition()
-        resize()
-        cornerDetect()
-        num += 1
-    else:
-        break
-    time.sleep(3)
+# num = 0
+# global frame
+# while(cap.isOpened()):
+#     ret, frame = cap.read()
+#     if ret == True:
+#         cv2.imwrite("pic/picture{:0=3}".format(num)+".png",frame)
+#         # print("save picture{:0=3}".format(num)+".png")
+#         changePosition()
+#         resize()
+#         cornerDetect()
+#         num += 1
+#     else:
+#         break
+#     time.sleep(3)
 
-cap.release()
+# cap.release()
+
+
+
+
+cornerDetect()
 
 
 
