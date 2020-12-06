@@ -20,7 +20,7 @@ dst = cv2.cornerHarris(gray,2,9,0.16)
 # dst = cv2.dilate(dst, None) 
 
 # Draw red points
-image[dst>0.01*dst.max()]= [0,0,255]
+image[dst>0.1*dst.max()]= [0,0,255]
 
 # Detect red pixel
 coord = np.where(np.all(image == (0, 0, 255), axis=-1))
