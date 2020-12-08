@@ -24,11 +24,11 @@ CHESS_VNUM = 10  # 垂直方向個数
 CHESS_MARGIN = 50  # [px]
 CHESS_BLOCKSIZE = 80  # [px]
 
-BOARD_WIDTH = 0.33  # chessboard の横幅 [m]
-BOARD_HEIGHT = 0.45  # chessboard の縦幅 [m]
+BOARD_WIDTH = 0.02  # chessboard の横幅 [m]
+BOARD_HEIGHT = 0.01  # chessboard の縦幅 [m]
 BOARD_X = 0.  # chessboard の3次元位置X座標 [m]（右手系）
 BOARD_Y = 0.  # chessboard の3次元位置Y座標 [m]（右手系）
-BOARD_Z = 1.5  # chessboard の3次元位置Z座標 [m]（右手系）
+BOARD_Z = 0.41  # chessboard の3次元位置Z座標 [m]（右手系）
 
 # OpenGL の射影のパラメータ
 class Params:
@@ -127,16 +127,29 @@ def board():
 
 # 座標たち
     gl.glTexCoord2i(0, 0) # テクスチャ座標（左上）id = 0
-    gl.glVertex3f(450 , 450 , 2.30024727) # オブジェクト座標
+    gl.glVertex3f(-0.145, -0.16, BOARD_Z)
     gl.glTexCoord2i(0, 1) # テクスチャ座標（左下）id = 3
-    gl.glVertex3f(520 , 1450 , 2.38920727)
+    gl.glVertex3f(-0.145, BOARD_Y, BOARD_Z)
     gl.glTexCoord2i(1, 1) # テクスチャ座標（右下）id = 2
-    gl.glVertex3f(1500, 1410 , 2.36340399)
-    gl.glTexCoord2i(1, 0) # テクスチャ座標（右上） id = 1
-    gl.glVertex3f(1460 , 410 , 2.28709619)
+    gl.glVertex3f(0.145, BOARD_Y, BOARD_Z)
+    gl.glTexCoord2i(1, 0) # テクスチャ座標（右上）id = 1
+    gl.glVertex3f(0.145, -0.16, BOARD_Z)
     gl.glEnd()
     gl.glPopMatrix()
 
+
+# 線
+def line():
+    # gl.glClear(gl.GL_COLOR_BUFFER_BIT)
+    gl.glLineWidth(0.05)
+    gl.glBegin(gl.GL_LINES)                           
+    #  線分の描画
+    gl.glVertex2f(-0.1, -0.1)
+    gl.glVertex2f(0.1, -0.1)
+    # gl.glVertex2f(50,50)
+    # gl.glVertex2f(100,50)
+    gl.glEnd()
+    gl.glFlush()
 
 # 描画の世界を作っている
 def on_draw_impl():
@@ -192,7 +205,8 @@ def on_draw_impl():
 
     # comment this to get round points with MSAA on
     gl.glEnable(gl.GL_POINT_SPRITE)
-    board()
+    # board()
+    line()
 
 '''
 # -------------------------------
