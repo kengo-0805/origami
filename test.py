@@ -2,7 +2,7 @@ import cv2
 import time
 from realsensecv import RealsenseCapture
 
-video_path = 1
+video_path = 0
 cap = cv2.VideoCapture(video_path)
 # cap = VideoCapture()
 

@@ -138,18 +138,6 @@ def board():
     gl.glPopMatrix()
 
 
-# 線
-def line():
-    # gl.glClear(gl.GL_COLOR_BUFFER_BIT)
-    gl.glLineWidth(0.05)
-    gl.glBegin(gl.GL_LINES)                           
-    #  線分の描画
-    gl.glVertex2f(-0.1, -0.1)
-    gl.glVertex2f(0.1, -0.1)
-    # gl.glVertex2f(50,50)
-    # gl.glVertex2f(100,50)
-    gl.glEnd()
-    gl.glFlush()
 
 # 描画の世界を作っている
 def on_draw_impl():
@@ -205,8 +193,8 @@ def on_draw_impl():
 
     # comment this to get round points with MSAA on
     gl.glEnable(gl.GL_POINT_SPRITE)
-    # board()
-    line()
+    board()
+    # line()
 
 '''
 # -------------------------------

@@ -1,6 +1,6 @@
 from PIL import Image
 # 画像ファイル名指定
-file_name = "fig/square.png"
+file_name = "fig/dot.png"
 
 # 入力画像の読み込み
 img = Image.open(file_name)
@@ -13,5 +13,5 @@ print('width:', width)
 # 画像の高さを表示
 print('height:',height)
 
-img_resize = img.resize((240, 211))
-img_resize.save('fig/square_risize.png')
+img_resize = img.resize((660, 900))
+img_resize.save('fig/dot_risize.png')
