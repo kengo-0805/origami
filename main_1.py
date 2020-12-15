@@ -31,8 +31,8 @@ from PIL import Image
 def changePosition():
   aruco = cv2.aruco
   p_dict = aruco.getPredefinedDictionary(aruco.DICT_4X4_50)
-  img = cv2.imread("pic/picture{:0=3}".format(num)+".png")
-  # img = cv2.imread("fig/square_risize.png")
+  # img = cv2.imread("pic/picture{:0=3}".format(num)+".png")
+  img = cv2.imread("pic/picture020.png")
   print("画像を読み込んだ")
   corners, ids, rejectedImgPoints = aruco.detectMarkers(img, p_dict) # 検出
 
@@ -127,24 +127,28 @@ def cornerDetect():
 
 
 
-video_path = 0
-cap = cv2.VideoCapture(video_path)
+# video_path = 0
+# cap = cv2.VideoCapture(video_path)
 
 
-num = 0
-global frame
-while(cap.isOpened()):
-    ret, frame = cap.read()
-    if ret == True:
-        cv2.imwrite("pic/picture{:0=3}".format(num)+".png",frame)
-        # print("save picture{:0=3}".format(num)+".png")
-        changePosition()
-        resize()
-        x, y = cornerDetect()
-        print("toda",x,y)
-        num += 1
-    else:
-        break
-    time.sleep(3)
+# num = 0
+# global frame
+# while(cap.isOpened()):
+#     ret, frame = cap.read()
+#     if ret == True:
+#         cv2.imwrite("pic/picture{:0=3}".format(num)+".png",frame)
+#         # print("save picture{:0=3}".format(num)+".png")
+#         changePosition()
+#         resize()
+#         x, y = cornerDetect()
+#         print("toda",x,y)
+#         num += 1
+#     else:
+#         break
+#     time.sleep(3)
+
+changePosition()
+resize()
+cornerDetect()
 
 cap.release()

@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 aruco = cv2.aruco
 p_dict = aruco.getPredefinedDictionary(aruco.DICT_4X4_50)
-img = cv2.imread('fig/test.png')
+img = cv2.imread('fig/IMG_0325.PNG')
 # img = cv2.bitwise_not(img)
 # cv2.imshow('image',img)
 # cv2.waitKey(0)
@@ -24,12 +24,14 @@ m[1] = corners2[1][0][3]
 m[2] = corners2[2][0][0]
 m[3] = corners2[3][0][1]
 
-width, height = (500,500) # 変形後画像サイズ
+width, height = (1600,900) # 変形後画像サイズ
 marker_coordinates = np.float32(m)
 true_coordinates   = np.float32([[0,0],[width,0],[width,height],[0,height]])
 trans_mat = cv2.getPerspectiveTransform(marker_coordinates,true_coordinates)
 img_trans = cv2.warpPerspective(img,trans_mat,(width, height))
-img_trans = cv2.cvtColor(img_trans, cv2.COLOR_BGR2RGB)
+# img_trans = cv2.cvtColor(img_trans, cv2.COLOR_BGR2RGB)
 print(m[0],m[1],m[2],m[3])
+# image = cv2.cvtColor(img_trans, cv2.COLOR_BGR2RGB)
+cv2.imwrite("fig/final_result.jpg",img_trans)
 plt.imshow(img_trans)
 plt.show()
